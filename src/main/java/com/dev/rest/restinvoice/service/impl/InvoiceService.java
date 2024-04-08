@@ -26,7 +26,8 @@ public class InvoiceService implements IInvoiceService {
 
     @Override
     public void updateInvoice(Invoice invoice) {
-
+        invoiceUtil.calculateFinalAmountIncludingGST(invoice);
+        invoiceRepository.save(invoice);
     }
 
     @Override
@@ -41,7 +42,9 @@ public class InvoiceService implements IInvoiceService {
 
     @Override
     public List<Invoice> getAllInvoices() {
-        return List.of();
+        List<Invoice> invoiceList = invoiceRepository.findAll();
+        invoiceList.sort((ob1,ob2) -> ob1.getId().intValue()-ob2.getId().intValue());
+        return invoiceList;
     }
 
     @Override
