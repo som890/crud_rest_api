@@ -8,7 +8,7 @@ public interface IInvoiceService {
     public Long saveInvoice(Invoice invoice);
     public void updateInvoice(Invoice invoice);
     public void deleteInvoice(Long id);
-    public Invoice getInvoice() ;
+    public Invoice getInvoice(Long id) ;
     public List<Invoice> getAllInvoices();
     public boolean isInvoiceExist(Long id);
     public Integer updateInvoiceNumberById(String number, Long id);
